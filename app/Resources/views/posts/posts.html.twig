@@ -1,14 +1,12 @@
-<html>
-    <head>
-        <title>View Sy 3.4</title>
-    </head>
-    <body>
-    {% for post in posts %}
-        <h2>{{ post.getTitle() }}</h2>
-        <p>{{ post.getContent() }}</p>
-        <p>Criado em: <strong>{{ post.getCreatedAt() | date("d/m/Y H:i:s") }}</strong></p>
-        <hr>
-    {% endfor %}
-    </body>
+{% extends 'base.html.twig' %}
 
-</html>
+{% block body %}
+    {% for post in posts %}
+        <li>
+            <h2>{{ post.getTitle() }}</h2>
+            <p>{{ post.getContent() }}</p>
+            <p>Criado em: <strong>{{ post.getCreatedAt() | date("d/m/Y H:i:s") }}</strong></p>
+            <hr>
+        </li>
+    {% endfor %}
+{% endblock %}

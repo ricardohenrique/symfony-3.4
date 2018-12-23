@@ -18,7 +18,10 @@ class PostController extends Controller
      */
     public function indexAction()
     {
-        return new Response("teste novo controller");
+//        $mailer = $this->get('mailer');
+//        $mailer->send()
+        $posts = $this->getDoctrine()->getRepository("AppBundle:Post")->findAll();
+        return $this->render('posts/posts.html.twig', ["posts" => $posts]);
     }
 
     /**
@@ -27,8 +30,10 @@ class PostController extends Controller
      */
     public function singleAction($slug)
     {
-        $data = ['slug' => $slug];
-        return $this->render('post/single.html.twig', $data);
+        $bold = $this->container->get("bold");
+        $slug = $bold->bold("ola");
 
+        $data = ['slug' => $slug];
+        return $this->render('posts/single.html.twig', $data);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Form\PostType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,6 +23,16 @@ class PostController extends Controller
 //        $mailer->send()
         $posts = $this->getDoctrine()->getRepository("AppBundle:Post")->findAll();
         return $this->render('posts/posts.html.twig', ["posts" => $posts]);
+    }
+
+    /**
+     * @Route("/create")
+     * @return Response
+     */
+    public function createAction()
+    {
+        $form = $this->createForm(PostType::class);
+        return $this->render('posts/create.html.twig', ["form" => $form->createView()]);
     }
 
     /**

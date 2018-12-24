@@ -9,6 +9,8 @@ parameters:
     locale: en
 
 framework:
+    templating:
+        engines: ['twig']
     #esi: ~
     #translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
@@ -37,7 +39,8 @@ twig:
     strict_variables: '%kernel.debug%'
     form_theme:
         - bootstrap_4_layout.html.twig
-
+#    paths:
+#        "%kernel.root_dir%/CodeExperts/AdminBundle/Resources/views": AdminBundle
 # Doctrine Configuration
 doctrine:
     dbal:

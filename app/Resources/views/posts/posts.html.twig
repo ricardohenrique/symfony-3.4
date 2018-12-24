@@ -1,12 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    {% for post in posts %}
-        <li>
-            <h2>{{ post.getTitle() }}</h2>
-            <p>{{ post.getContent() }}</p>
-            <p>Criado em: <strong>{{ post.getCreatedAt() | date("d/m/Y H:i:s") }}</strong></p>
-            <hr>
-        </li>
-    {% endfor %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                {%  include 'includes/messages.html.twig' %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <a href="/posts/create" class="btn btn-success">Criar Post</a>
+            </div>
+            {% for post in posts %}
+                <li class="col-sm-12">
+                    <h2>{{ post.getTitle() }}</h2>
+                    <p>{{ post.getContent() }}</p>
+                    <p>Criado em: <strong>{{ post.getCreatedAt() | date("d/m/Y H:i:s") }}</strong></p>
+                    <a href="/posts/edit/{{ post.getId() }}">Editar</a>
+                    <hr>
+                </li>
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

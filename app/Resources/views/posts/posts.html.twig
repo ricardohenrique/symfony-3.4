@@ -17,6 +17,7 @@
                     <p>{{ post.getContent() }}</p>
                     <p>Criado em: <strong>{{ post.getCreatedAt() | date("d/m/Y H:i:s") }}</strong></p>
                     <a href="/posts/edit/{{ post.getId() }}">Editar</a>
+                    <a href="/posts/remove/{{ post.getId() }}">Deletar</a>
                     <hr>
                 </li>
             {% endfor %}
